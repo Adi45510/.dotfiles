@@ -17,18 +17,20 @@ fi
 ## Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Add in zsh plugins
+## Add in zsh plugins
+#  Here "zsh-users","chisui" are git acc names, "zsh-blah-blah" is repo name
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit light chisui/zsh-nix-shell
 
-# Add in Powerlevel10k
+## Add in Powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+## To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# History
+## History
 HISTSIZE=3000
 HISTFILE=~/.zhistory
 SAVEHIST=$HISTSIZE
@@ -93,7 +95,8 @@ fi
 ### Modifications ###
 #####################
 
-
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export XDG_CURRENT_DESKTOP=Hyprland
 
 ## Shell integrations
@@ -103,10 +106,14 @@ eval "$(zoxide init --cmd cd zsh)"
 ## pywal
 (cat ~/.cache/wal/sequences &)
 
+## Nix
+export PATH=/home/adi/.nix-profile/bin:$PATH
+# typeset -g POWERLEVEL9K_NIX_SHELL_CONTENT_EXPANSION=''
+
 ## java
 export ANDROID_HOME=/home/adi/zzz/java/platform-tools
 export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-export JAVA_HOME=/home/adi/zzz/java/jdk-21.0.5
+export JAVA_HOME=/home/adi/zzz/java/jdk-18.0.2.1
 export PATH=$JAVA_HOME/bin:$PATH
 
 ## Aliases

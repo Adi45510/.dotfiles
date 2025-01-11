@@ -68,6 +68,8 @@
         "exec": "~/zzz/scripts/waybar/now_playing_artist.sh",
         "on-click": "playerctl previous",
         "on-click-right": "playerctl next",
+        "on-scroll-up": "~/zzz/scripts/volume/volume_up.sh",
+        "on-scroll-down": "~/zzz/scripts/volume/volume_down.sh",
         "interval": 1,
         "tooltip": false
     },
@@ -76,8 +78,8 @@
         "exec": "~/zzz/scripts/waybar/now_playing.sh",
         "on-click-right": "zen-browser --new-tab https://music.youtube.com",
         "on-click": "playerctl play-pause",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "on-scroll-up": "~/zzz/scripts/volume/volume_up.sh",
+        "on-scroll-down": "~/zzz/scripts/volume/volume_down.sh",
         "interval": 1,
         "tooltip": false
     },
@@ -85,12 +87,14 @@
     "custom/os_button": {
         "format": "󰣇",
         "on-click": "rofi -show drun",
+        "on-click-right": "~/zzz/scripts/waybar/power_management.sh",
         "tooltip": false
     },
 
     "custom/power": {
         "format": "",
-        "on-click": "sh $HOME/zzz/scripts/waybar/power_management.sh",
+        "on-click": "~/zzz/scripts/random_wall.sh",
+        "on-click-right": "~/zzz/scripts/new_wall.sh",
         "tooltip": false
     },
 
