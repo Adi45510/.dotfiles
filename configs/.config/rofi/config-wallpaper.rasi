@@ -2,18 +2,14 @@
 
 configuration {
     modi:                       "drun,run";
-    show-icons:                 false;
-    icon-theme:                 "Kora";
-    display-drun:               "Open : ";
-    display-run:                "Open : ";
-    display-filebrowser:        "FILES";
-    display-window:             "WINDOW";
-    drun-display-format:        "{name}";
+    show-icons:                 true;
     hover-select:               false;
     scroll-method:              1;
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
+    drun-display-format:        "{name}";
     window-format:              "{w} · {c} · {t}";
+    
 }
 
 window {
@@ -34,6 +30,22 @@ window {
     border-radius:                12px;
 }
 
+mainbox {
+    enabled:                      true;
+    orientation:                  vertical;
+    spacing:                      0px;
+    margin:                       0px;
+    background-color:             transparent;
+    children:                     ["listbox"];
+}
+
+listbox {
+    spacing:                     4px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "listview" ];
+}
+
 listview {
     columns: 1;
     lines: 3;
@@ -43,6 +55,7 @@ listview {
     scrollbar: false;
     border: 0px solid;
 }
+
 
 prompt {
     padding: 0 5px 0 5px;
@@ -56,16 +69,10 @@ inputbar {
 }
 
 entry {
-    placeholder: "";
+    placeholder: "select";
     padding: 2px;
 }
 
-mainbox {
-    spacing: 4px;
-    margin: 0;
-    padding: 0;
-    children: ["inputbar", "listview", "message"];
-}
 
 listview{
     border-radius: 8px;
@@ -74,7 +81,7 @@ listview{
 element {
     spacing: 0;
     margin: 0;
-    padding: 8px;
+    padding: 4px;
     border: 0px solid;
     border-radius: 0;
     background-color: transparent;
@@ -95,3 +102,4 @@ element selected.active {
 element selected.normal {
 	text-color: @background;
 }
+

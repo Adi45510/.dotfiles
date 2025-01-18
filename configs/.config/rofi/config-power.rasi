@@ -2,7 +2,7 @@
 
 configuration {
     modi:                       "drun,run";
-    font:                       "Mononoki 24";
+    font:                       "Mononoki 25";
 }
 
 window {

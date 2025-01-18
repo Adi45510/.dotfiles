@@ -4,9 +4,9 @@
     "position": "top",
     "margin-top": 6,
     "margin-bottom": -4,
-    "margin-left": 8,
-    "margin-right": 8,
-    "spacing": 8,
+    "margin-left": 9,
+    "margin-right": 9,
+    "spacing": 6,
 
 
   "modules-left":
@@ -16,7 +16,7 @@
     ["custom/now_playing_artist","custom/now_playing"],
 
   "modules-right":
-    ["temperature","cpu","custom/mem","privacy","custom/network_speed","custom/power"],
+    ["pulseaudio","temperature","cpu","custom/mem","privacy","custom/network_speed","custom/wall"],
 
 
 
@@ -26,7 +26,6 @@
         "calendar": {
                     "mode"          : "year",
                     "mode-mon-col"  : 3,
-                    "weeks-pos"     : "right",
                     "on-scroll"     : 1,
                     "format": {
                               "months":     "<span color='#ffead3'><b>{}</b></span>",
@@ -46,7 +45,7 @@
     },
 
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage} %",
         "interval": 1
     },
 
@@ -68,8 +67,6 @@
         "exec": "~/zzz/scripts/waybar/now_playing_artist.sh",
         "on-click": "playerctl previous",
         "on-click-right": "playerctl next",
-        "on-scroll-up": "~/zzz/scripts/volume/volume_up.sh",
-        "on-scroll-down": "~/zzz/scripts/volume/volume_down.sh",
         "interval": 1,
         "tooltip": false
     },
@@ -78,8 +75,6 @@
         "exec": "~/zzz/scripts/waybar/now_playing.sh",
         "on-click-right": "zen-browser --new-tab https://music.youtube.com",
         "on-click": "playerctl play-pause",
-        "on-scroll-up": "~/zzz/scripts/volume/volume_up.sh",
-        "on-scroll-down": "~/zzz/scripts/volume/volume_down.sh",
         "interval": 1,
         "tooltip": false
     },
@@ -91,10 +86,10 @@
         "tooltip": false
     },
 
-    "custom/power": {
+    "custom/wall": {
         "format": "",
-        "on-click": "~/zzz/scripts/random_wall.sh",
-        "on-click-right": "~/zzz/scripts/new_wall.sh",
+        "on-click": "~/zzz/scripts/select_wall.sh",
+        "on-click-right": "~/zzz/scripts/random_wall.sh",
         "tooltip": false
     },
 
@@ -102,8 +97,18 @@
         "on-scroll-up": "hyprctl dispatch workspace e-1",
         "on-scroll-down": "hyprctl dispatch workspace e+1",
         "format": "{icon}",
-        "format-icons": {"active": "","default": ""},
+        "format-icons": {"active":"","default":""},
         "persistent-workspaces": {"1": [],"2": [],"3": [],"4": [],"4": [],"5": [],"6": [],"7": [],"8": []}
+    },
+
+    "mpd#artist": {
+        "artist-len": 30,
+        "format": "{artist}"
+    },
+
+    "mpd#title": {
+        "title-len": 30,
+        "format": "{title}"
     },
 
     "privacy": {
@@ -119,19 +124,20 @@
           "type": "audio-in",
           "tooltip": true
         }
-/*        
-        {
-          "type": "audio-out",
-          "tooltip": true
-        },
-*/        
       ]
     },
 
+    "pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{volume} 󰎇",
+		"format-muted": "0 󰎊",
+		"on-click":"wpctl set-mute @DEFAULT_SINK@ toggle"
+	},
+
     "temperature": {
         "critical-threshold": 70,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": [""]
+        "format": "{temperatureC} °C"
     },
 
     "tray": {

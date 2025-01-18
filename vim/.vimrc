@@ -1,13 +1,6 @@
 " this is a comment
 " set number
 
-"  _   _                 _            
-" | \ | | ___  _____   _(_)_ __ ___   
-" |  \| |/ _ \/ _ \ \ / / | '_ ` _ \  
-" | |\  |  __/ (_) \ V /| | | | | | | 
-" |_| \_|\___|\___/ \_/ |_|_| |_| |_| 
-"                                     
-" by Stephan Raabe (2023) 
 " ----------------------------------------------------- 
 
 " Disable compatibility with vi which can cause unexpected issues.
@@ -44,7 +37,7 @@ set scrolloff=10
 set mouse=a
 
 " Do not wrap lines. Allow long lines to extend as far as the line goes.
-" set nowrap
+set nowrap
 
 " While searching though a file incrementally highlight matching characters as you type.
 set incsearch

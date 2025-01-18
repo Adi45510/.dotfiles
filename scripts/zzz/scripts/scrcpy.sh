@@ -1,1 +1,1 @@
-scrcpy --max-size=1200 --power-off-on-close --stay-awake --keyboard=uhid --turn-screen-off
+scrcpy --turn-screen-off --keyboard=uhid --max-size=1200 --power-off-on-close --stay-awake
