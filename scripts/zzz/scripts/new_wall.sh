@@ -16,26 +16,29 @@ else
 fi
 
 ## pywal
-rm -rf ~/.cache/wal/*
+# rm -rf ~/.cache/wal/*
 wal -i "$WALL"
+hyprctl reload
 
 ## swww
-swww img "$WALL" --transition-step 60 --transition-fps 60 --transition-type any &
+swww img "$WALL" --transition-step 20 --transition-fps 60 --transition-type any &
 
-echo "$(date +'%Y-%m-%d %H:%M:%S') - $WALL" >> "$HOME/pictures/walls/recent_walls.txt"
+# echo "$(date +'%Y-%m-%d %H:%M:%S') - $WALL" >> "$HOME/pictures/walls/recent_walls.txt"
 echo $WALL > "$HOME/pictures/walls/current_wall.txt"
 
-## pywal in applications
+## apps
 nohup pywalfox update > /dev/null
 nohup walogram -s > /dev/null
+
+## hyprpaper
+sed -i "4s|path = .*|path = $WALL|" ~/.config/hypr/hyprlock.conf
 
 ## waybar
 killall -SIGUSR2 waybar
 
-## hyprpaper/swww & hyprlock
+## hyprpaper & hyprlock
 # sed -i "s|^wallpaper =.*|wallpaper = ,$WALL|" ~/.config/hypr/hyprpaper.conf
 # sed -i "s|^preload =.*|preload = $WALL|" ~/.config/hypr/hyprpaper.conf
-sed -i "4s|path = .*|path = $WALL|" ~/.config/hypr/hyprlock.conf
 # pkill hyprpaper
 # nohup hyprpaper &> /dev/null &
 

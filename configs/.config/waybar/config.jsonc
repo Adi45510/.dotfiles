@@ -73,7 +73,6 @@
 
     "custom/now_playing": {
         "exec": "~/zzz/scripts/waybar/now_playing.sh",
-        "on-click-right": "zen-browser --new-tab https://music.youtube.com",
         "on-click": "playerctl play-pause",
         "interval": 1,
         "tooltip": false
@@ -82,7 +81,7 @@
     "custom/os_button": {
         "format": "󰣇",
         "on-click": "rofi -show drun",
-        "on-click-right": "~/zzz/scripts/waybar/power_management.sh",
+        "on-click-right": "~/.config/rofi/powermenu/powermenu.sh",
         "tooltip": false
     },
 
@@ -91,6 +90,15 @@
         "on-click": "~/zzz/scripts/select_wall.sh",
         "on-click-right": "~/zzz/scripts/random_wall.sh",
         "tooltip": false
+    },
+
+    "group/test": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false
+        },
+        "modules": ["cpu","pulseaudio","temperature","custom/mem"]
     },
 
     "hyprland/workspaces": {
@@ -137,12 +145,13 @@
 
     "temperature": {
         "critical-threshold": 70,
-        "format": "{temperatureC} °C"
+        "format": "{temperatureC} °C",
+        "tooltip": false
     },
 
     "tray": {
         "icon-theme": "kora",
         "icon-size": 10,
-        "spacing": 12
+        "spacing": 10
     }
 }

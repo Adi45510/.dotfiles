@@ -27,8 +27,9 @@ button:hover {
 .modules-left,
 .modules-center,
 .modules-right {
-    background-color: @background;
-    border-radius: 12px;
+    background-color: alpha(@background, 0.85);
+    border-radius: 11px;
+    border: 0px solid @color4;
 }
 
 

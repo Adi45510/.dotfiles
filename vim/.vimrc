@@ -1,5 +1,5 @@
 " this is a comment
-" set number
+set number
 
 " ----------------------------------------------------- 
 
