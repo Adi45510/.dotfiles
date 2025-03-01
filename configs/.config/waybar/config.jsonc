@@ -67,14 +67,12 @@
         "exec": "~/zzz/scripts/waybar/now_playing_artist.sh",
         "on-click": "playerctl previous",
         "on-click-right": "playerctl next",
-        "interval": 1,
         "tooltip": false
     },
 
     "custom/now_playing": {
         "exec": "~/zzz/scripts/waybar/now_playing.sh",
         "on-click": "playerctl play-pause",
-        "interval": 1,
         "tooltip": false
     },
 

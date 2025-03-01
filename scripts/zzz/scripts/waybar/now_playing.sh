@@ -2,12 +2,20 @@
 
 source ~/zzz/scripts/waybar/utils.sh
 
-song_name=$(playerctl metadata --format "{{ title }}" 2>/dev/null)
+process_title() {
+    local title="$1"
+    if [ -z "$title" ]; then
+        printf "󰎇\n"
+    else
+        truncated_title=$(truncate_string "$title")
+        escaped_title=$(escape_markup "$truncated_title")
+        printf "%s\n" "$escaped_title"
+    fi
+}
 
-if [ -z "$song_name" ]; then
-    printf "󰎇"
-else
-    truncated_title=$(truncate_string "$song_name")
-    escaped_title=$(escape_markup "$truncated_title")
-    printf "%s\n" "$escaped_title"
-fi
+title=$(playerctl metadata --format '{{title}}' 2>/dev/null)
+process_title "$title"
+
+playerctl --follow metadata --format '{{title}}' 2>/dev/null | while IFS= read -r title; do
+    process_title "$title"
+done

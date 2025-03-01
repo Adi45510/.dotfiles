@@ -34,6 +34,7 @@ nohup walogram -s > /dev/null
 sed -i "4s|path = .*|path = $WALL|" ~/.config/hypr/hyprlock.conf
 
 ## waybar
+killall playerctl
 killall -SIGUSR2 waybar
 
 ## hyprpaper & hyprlock
