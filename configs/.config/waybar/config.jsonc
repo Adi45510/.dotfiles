@@ -58,8 +58,7 @@
 
     "custom/network_speed": {
         "exec": "~/zzz/scripts/waybar/network_monitor.sh",
-        "on-click": "~/zzz/scripts/waybar/wifi_settings.sh",
-        "interval": 1,
+        "on-click": "network_manager",
         "tooltip": false
     },
 
