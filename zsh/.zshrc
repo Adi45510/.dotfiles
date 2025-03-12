@@ -98,7 +98,6 @@ fi
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export XDG_CURRENT_DESKTOP=Hyprland
-export QT_QPA_PLATFORMTHEME=qt5ct
 
 ## Shell integrations
 eval "$(fzf --zsh)"
@@ -121,4 +120,3 @@ export PATH=$JAVA_HOME/bin:$PATH
 alias ls='ls --color'
 alias grep='grep --color=auto'
 alias vi='vim'
-alias H='dbus-run-session Hyprland'

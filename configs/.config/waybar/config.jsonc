@@ -13,7 +13,7 @@
     ["custom/os_button","clock","tray","hyprland/workspaces"],
 
   "modules-center":
-    ["custom/now_playing_artist","custom/now_playing"],
+    ["custom/now_playing_artist","group/playerctl"],
 
   "modules-right":
     ["pulseaudio","temperature","cpu","custom/mem","privacy","custom/network_speed","custom/wall"],
@@ -24,7 +24,7 @@
         "format-alt": "{:%d / %m / %Y}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
-                    "mode"          : "year",
+                    "mode"          : "month",
                     "mode-mon-col"  : 3,
                     "on-scroll"     : 1,
                     "format": {
@@ -62,17 +62,41 @@
         "tooltip": false
     },
 
-    "custom/now_playing_artist": {
-        "exec": "~/zzz/scripts/waybar/now_playing_artist.sh",
-        "on-click": "playerctl previous",
-        "on-click-right": "playerctl next",
+    "custom/now_playing": {
+        "exec": "~/zzz/scripts/waybar/now_playing.sh",
         "tooltip": false
     },
 
-    "custom/now_playing": {
-        "exec": "~/zzz/scripts/waybar/now_playing.sh",
+    "custom/now_playing_artist": {
+        "exec": "~/zzz/scripts/waybar/now_playing_artist.sh",
+        "tooltip": false
+    },
+
+    "custom/playerctl_prev": {
+        "format": " 󰼨 ",
+        "on-click": "playerctl previous",
+        "tooltip": false
+    },
+
+    "custom/playerctl_pause": {
+        "format": " 󱖑 ",
         "on-click": "playerctl play-pause",
         "tooltip": false
+    },
+
+    "custom/playerctl_next": {
+        "format": " 󰼧 ",
+        "on-click": "playerctl next",
+        "tooltip": false
+    },
+
+    "group/playerctl": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false
+        },
+        "modules": ["custom/now_playing","custom/playerctl_prev","custom/playerctl_pause","custom/playerctl_next"]
     },
 
     "custom/os_button": {
@@ -86,6 +110,7 @@
         "format": "",
         "on-click": "~/zzz/scripts/select_wall.sh",
         "on-click-right": "~/zzz/scripts/random_wall.sh",
+        "on-click-middle": "hyprpicker -a",
         "tooltip": false
     },
 
@@ -106,16 +131,6 @@
         "persistent-workspaces": {"1": [],"2": [],"3": [],"4": [],"4": [],"5": [],"6": [],"7": [],"8": []}
     },
 
-    "mpd#artist": {
-        "artist-len": 30,
-        "format": "{artist}"
-    },
-
-    "mpd#title": {
-        "title-len": 30,
-        "format": "{title}"
-    },
-
     "privacy": {
         "icon-size": 10,
         "icon-spacing": 8,
@@ -134,7 +149,7 @@
 
     "pulseaudio": {
 		"tooltip": false,
-		"scroll-step": 5,
+		"scroll-step": 1,
 		"format": "{volume} 󰎇",
 		"format-muted": "0 󰎊",
 		"on-click":"wpctl set-mute @DEFAULT_SINK@ toggle"

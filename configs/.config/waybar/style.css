@@ -36,6 +36,9 @@ button:hover {
 
 #cpu,
 #custom-mem,
+#custom-playerctl_prev,
+#custom-playerctl_pause,
+#custom-playerctl_next,
 #privacy,
 #temperature,
 #tray
@@ -94,7 +97,7 @@ button:hover {
 }
 #custom-now_playing:hover {
 	transition: ease 0.8s all;
-	color: @color1;
+	color: @color5;
 	background-color: @background;
 }
 #custom-now_playing_artist {
